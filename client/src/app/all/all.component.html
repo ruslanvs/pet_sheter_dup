@@ -1,0 +1,13 @@
+<hr>
+<div *ngFor="let pet of pets_all.data">
+  <img src="{{pet.image_url}}">
+  <p>Name: {{ pet.name }} | Type: {{ pet.type }}</p>
+  <p>Image url: {{ pet.image_url }}</p>
+  <p>Likes: {{ pet.like }}</p>
+  <p>Wiz: {{ pet.wiz }}</p>
+  <button (click) = "details( pet._id )">Details</button>
+  <button (click) = "edit( pet._id )">Edit</button>
+  <button (click) = "pets_like( pet._id )" [disabled]="clicked[pet._id]">Like</button>
+  <button (click) = "pets_delete_one( pet._id )">Delete</button>
+  <hr>
+</div>

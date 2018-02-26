@@ -1,0 +1,127 @@
+<h2>Edit this pet</h2>
+
+{{ lim.minlength }}
+{{ lim.maxlength }}
+<form (submit) = "pets_update( pets_one )" #form_data="ngForm">
+  <!-- <p>{{ pets_one | json}}</p> -->
+  <!-- Form data value: {{ form_data.status | json }} -->
+  <!-- {{ lim.minlength }} -->
+
+  <input
+    type="text"
+    name="name"
+    required
+    [(minlength)]="lim.minlength"
+    [(maxlength)]="lim.maxlength"
+    [(ngModel)] = "pets_one.name"
+    #name="ngModel"
+    placeholder = "name"
+  />*
+  <a *ngIf="name.touched && name.invalid" class="error">
+    <a *ngIf="name.errors.required">Error: name must be filled out.</a>
+    <a *ngIf="name.errors.minlength">Error: name should have at least {{ name.errors.minlength.requiredLength | json }} characters.</a>
+  </a>
+  <a *ngIf="errors" class="error">{{ errors.name }}</a>
+  <br>
+
+  <input
+    type="text"
+    name="type"
+    required
+    [(minlength)]="lim.minlength"
+    [(maxlength)]="lim.maxlength"
+    [(ngModel)] = "pets_one.type"
+    #type="ngModel"
+    placeholder="type"
+  />*
+  <a *ngIf="type.touched && type.invalid" class="error">
+    <a *ngIf="type.errors.required">Error: type must be filled out.</a>
+    <a *ngIf="type.errors.minlength">Error: type should have at least {{ type.errors.minlength.requiredLength | json }} characters.</a>
+  </a>
+  <a *ngIf="errors" class="error">{{ errors.type }}</a>
+  <br>
+
+  <input
+    type="text"
+    name="desc"
+    required
+    [(minlength)]="lim.minlength"
+    [(maxlength)]="lim.maxlength"
+    [(ngModel)]="pets_one.desc"
+    #desc="ngModel"
+    placeholder = "desc"
+  />*
+  <a *ngIf="desc.touched && desc.invalid" class="error">
+    <a *ngIf="desc.errors.required">Error: description must be filled out.</a>
+    <a *ngIf="desc.errors.minlength">Error: description should have at least {{ desc.errors.minlength.requiredLength | json }} characters.</a>
+  </a>
+  <a *ngIf="errors" class="error">{{ errors.desc }}</a>
+  <br>
+
+  <input
+    type="text"
+    name="image_url"
+    [(ngModel)]="pets_one.image_url"
+    placeholder="image url"
+  />
+  <br>
+
+  <input
+    type="text"
+    name="skill1"
+    [(minlength)]="lim.minlength"
+    [(maxlength)]="lim.maxlength"
+    [(ngModel)] = "pets_one.skill1"
+    #skill1="ngModel"
+    placeholder = "skill1"
+  />
+  <a *ngIf="skill1.touched && skill1.invalid" class="error">
+    <a *ngIf="skill1.errors.minlength">Error: a skill should have at least {{ skill1.errors.minlength.requiredLength | json }} characters.</a>
+  </a>
+  <a *ngIf="errors" class="error">{{ errors.skill1 }}</a>
+  <br>
+
+  <input
+    type="text"
+    name="skill2"
+    [(minlength)]="lim.minlength"
+    [(maxlength)]="lim.maxlength"
+    [(ngModel)]="pets_one.skill2"
+    #skill2="ngModel"
+    placeholder = "skill2"
+  />
+  <a *ngIf="skill2.touched && skill2.invalid" class="error">
+    <a *ngIf="skill2.errors.minlength">Error: a skill should have at least {{ skill2.errors.minlength.requiredLength | json }} characters.</a>
+  </a>
+  <a *ngIf="errors" class="error">{{ errors.skill2 }}</a>
+  <br>
+
+  <input
+    type="text"
+    name="skill3"
+    [(minlength)]="lim.minlength"
+    [(maxlength)]="lim.maxlength"
+    [(ngModel)]="pets_one.skill3"
+    #skill3="ngModel"
+    placeholder = "skill3"
+  />
+  <a *ngIf="skill3.touched && skill3.invalid" class="error">
+    <a *ngIf="skill3.errors.minlength">Error: a skill should have at least {{ skill3.errors.minlength.requiredLength | json }} characters.</a>
+  </a>
+  <a *ngIf="errors" class="error">{{ errors.skill3 }}</a>
+  <br>
+
+  <input
+    type="text"
+    name="wiz"
+    [(ngModel)]="pets_one.wiz"
+    placeholder="wiz"
+  />
+  <br>
+
+  <input type="submit" [disabled]="form_data.status == 'INVALID'" value="Save"/>
+  
+</form>
+<button (click) = "details( pets_one._id )">Cancel</button>
+
+<p>* required fields</p>

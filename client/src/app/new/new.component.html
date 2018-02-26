@@ -1,0 +1,138 @@
+<h2>Know of a pet needing a home?</h2>
+<p>The pet must have a name</p>
+
+<!-- {{ lim.name.maxlength }} -->
+
+<form (submit) = "pets_create()" #form_data="ngForm">
+  <!-- Form data value: {{ form_data.status | json }} -->
+  <p>{{ new_pet | json }}</p>
+  <input
+    type="text"
+    name="name"
+    required
+    [(minlength)]="lim.minlength"
+    [(maxlength)]="lim.maxlength"
+    [(ngModel)]="new_pet.name"
+    #name="ngModel"
+    placeholder="name"
+  />*
+  <a *ngIf="name.touched && name.invalid" class="error">
+    <!-- {{ errors_rend(name.errors) }} -->
+    <a *ngIf="name.errors.required">Error: name must be filled out.</a>
+    <a *ngIf="name.errors.minlength">Error: name should have at least {{ name.errors.minlength.requiredLength | json }} characters.</a>
+  </a>
+  <a *ngIf="errors.name" class="error">{{ errors.name.message }}</a>
+  <br>
+
+  
+    <!-- <a [hidden]="name.untouched || name.valid">Error: {{ name.errors | json }}</a> -->
+  <!-- <a class="error" [hidden]="name.untouched || name.valid.required"
+    *ngIf="name.errors">Error: {{ name.errors | json }}</a> -->
+  <!-- <a class="error" [hidden]="name.untouched || name.valid.required"
+    *ngIf="name.errors.minlength">Error: name should be at least {{ name.errors.minlength.requiredLength  | json }}</a> -->
+
+  <!-- {{ name.errors | json | uppercase }} -->
+  <!-- {{ name.valid | json | uppercase }} -->
+  <input
+    type="text"
+    name="type"
+    required
+    [(minlength)]="lim.minlength"
+    [(maxlength)]="lim.maxlength"
+    [(ngModel)]="new_pet.type"
+    #type="ngModel"
+    placeholder="type"
+  />*
+  <a *ngIf="type.touched && type.invalid" class="error">
+    <a *ngIf="type.errors.required">Error: type must be filled out.</a>
+    <a *ngIf="type.errors.minlength">Error: type should have at least {{ type.errors.minlength.requiredLength | json }} characters.</a>
+  </a>
+  <a *ngIf="errors.type" class="error">{{ errors.type.message }}</a>
+  <br>
+  
+  <input
+    type="text"
+    name="desc"
+    required
+    [(minlength)]="lim.minlength"
+    [(maxlength)]="lim.maxlength"
+    [(ngModel)]="new_pet.desc"
+    #desc="ngModel"
+    placeholder="description"
+  />*
+  <a *ngIf="desc.touched && desc.invalid" class="error">
+    <a *ngIf="desc.errors.required">Error: description must be filled out.</a>
+    <a *ngIf="desc.errors.minlength">Error: description should have at least {{ desc.errors.minlength.requiredLength | json }} characters.</a>
+  </a>
+  <a *ngIf="errors.desc" class="error">{{ errors.desc.message }}</a>
+  <br>
+
+  <input
+    type="text"
+    name="image_url"
+    [(ngModel)]="new_pet.image_url"
+    placeholder="image url"
+  />
+  <br>
+
+  <h3>Skills:</h3>
+  <input
+    type="text"
+    name="skill1"
+    [(minlength)]="lim.minlength"
+    [(maxlength)]="lim.maxlength"
+    [(ngModel)]="new_pet.skill1"
+    #skill1="ngModel"
+    placeholder="skill"
+  />
+  <a *ngIf="skill1.touched && skill1.invalid" class="error">
+    <a *ngIf="skill1.errors.minlength">Error: a skill should have at least {{ skill1.errors.minlength.requiredLength | json }} characters.</a>
+  </a>
+  <a *ngIf="errors" class="error">{{ errors.skill1 }}</a>
+  
+  <br>
+
+  <input
+    type="text"
+    name="skill2"
+    [(minlength)]="lim.minlength"
+    [(maxlength)]="lim.maxlength"
+    [(ngModel)]="new_pet.skill2"
+    #skill2="ngModel"
+    placeholder="skill"
+  />
+  <a *ngIf="skill2.touched && skill2.invalid" class="error">
+    <a *ngIf="skill2.errors.minlength">Error: a skill should have at least {{ skill2.errors.minlength.requiredLength | json }} characters.</a>
+  </a>
+  <a *ngIf="errors" class="error">{{ errors.skill2 }}</a>
+  <br>
+  
+  <input
+    type="text"
+    name="skill3"
+    [(minlength)]="lim.minlength"
+    [(maxlength)]="lim.maxlength"
+    [(ngModel)]="new_pet.skill3"
+    #skill3="ngModel"
+    placeholder="skill"
+  />
+  <a *ngIf="skill3.touched && skill3.invalid" class="error">
+    <a *ngIf="skill3.errors.minlength">Error: a skill should have at least {{ skill3.errors.minlength.requiredLength | json }} characters.</a>
+  </a>
+  <a *ngIf="errors" class="error">{{ errors.skill3 }}</a>
+  <br>
+  
+  <input
+    type="text"
+    name="wiz"
+    [(ngModel)]="new_pet.wiz"
+    placeholder="wiz"
+  />
+  <br>
+
+  <input type="submit" [disabled]="form_data.status == 'INVALID'" value="Add Pet"/>
+  
+</form>
+<button (click) = "home()">Cancel</button>
+
+<p>* required fields</p>

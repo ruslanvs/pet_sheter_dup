@@ -1,0 +1,14 @@
+<h2>Details about {{ pets_one.name }}</h2>
+<img src="{{pets_one.image_url}}">
+<p>Pet type: {{ pets_one.type }}</p>
+<p>Description: {{ pets_one.desc }}</p>
+<h3>Skills:</h3>
+<p>{{ pets_one.skill1 }}</p>
+<p>{{ pets_one.skill2 }}</p>
+<p>{{ pets_one.skill3 }}</p>
+<p>Likes: {{ pets_one.like }}</p>
+
+
+<button (click) = "pets_delete_one( pets_one._id )">Adopt this pet!</button>
+<button (click) = "edit( pets_one._id )">Edit</button>
+<button (click) = "pets_like( pets_one._id )" [disabled]="clicked">Like this pet</button>
